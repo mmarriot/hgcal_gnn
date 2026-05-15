@@ -1,0 +1,16 @@
+universe     = vanilla
+executable   = run.sh
+
+error  = logs/job.$(Cluster).$(Process).error
+output = logs/job.$(Cluster).$(Process).output
+log    = logs/job.$(Cluster).$(Process).log
+
+request_gpus   = 1
+request_memory = 32000
++MaxRuntime    = 500000
+
+# I was having environment issues on other gpus, maybe fixed now as this was a long time ago 
+requirements = (AssignedGPUs == "GPU-fedc6f6b" || AssignedGPUs == "GPU-627c72ae" || \
+                AssignedGPUs == "GPU-26b53f56" || AssignedGPUs == "GPU-5269b953")
+
+queue
